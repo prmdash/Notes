@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/style.css">
     <title>Notes</title>
 </head>
 
@@ -10,10 +10,10 @@
     <!--navigation bar-->
     <nav>
         <ul>
-            <li class="img"><img src="static/images/note.png"></li>
+            <li class="img"><img src="../../../static/images/note.png"></li>
             <li><a href="/">Notes</a></li>
             <li class="right">
-                <a href="/add">Add Note</a>
+                <a href="/notes/create">Add Note</a>
                 <a href="/profile">Profile</a>
             </li>
         </ul>
@@ -27,17 +27,17 @@
 
         <!--note edit data form-->
         <div class="form">
-            <form method="POST">
-                <input type="hidden" name="csrfmiddlewaretoken" value="E8qoLvlyiXBfE7NlcyWlXe1TMWV5qvo7BW8mLA5h6FQ8DjDKYeqsO6eF4dTecGxS">
-                <label for="name">Title</label>
-                <input type="text" name="title" value="Today Tasks" maxlength="50" required="" id="id_title">
+            <form method="POST" action="{% url 'edit note' note.id %}">
+                {{ form.title.label }}
+                {{ form.title }}
 
-                <label for="content">Content</label>
-                <textarea name="description" cols="40" rows="10" required="" id="id_description">Today I need to go shopping, make some pancakes, and at the end of the day I should write some code.</textarea>
+                {{ form.content.label }}
+                {{ form.content }}
 
-                <label for="image_url">Link to Image</label>
-                <input type="url" name="image_url" value="https://www.freeiconspng.com/thumbs/tasks-icon/tasks-icon-9.png" maxlength="200" required="" id="id_image_url">
+                {{ form.image_url.label }}
+                {{ form.image_url }}
 
+                {% csrf_token %}
                 <input type="submit" value="Edit">
             </form>
         </div>
