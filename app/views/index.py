@@ -1,13 +1,14 @@
 from django.shortcuts import render
 
 # Create your views here.
+from app.common.profile import get_profile
 from app.models import *
 from app.views.profiles import create_profile
 
 
 def index(request):
     if Profile.objects.exists():
-        profile = Profile.objects.first()
+        profile = get_profile()
         notes = Note.objects.all()
 
         context = {

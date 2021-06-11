@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <title>Notes</title>
 </head>
 
@@ -10,11 +10,11 @@
     <!--navigation bar-->
     <nav>
         <ul>
-            <li class="img"><img src="static/images/note.png"></li>
+            <li class="img"><img src="../static/images/note.png"></li>
             <li><a href="/">Notes</a></li>
             <li class="right">
-                <a href="/add">Add Note</a>
-                <a href="/profile">Profile</a>
+{#                <a href="{% url 'add notes' %}">Add Note</a>#}
+{#                <a href="{% url 'view profile' %}">Profile</a>#}
             </li>
         </ul>
     </nav>
@@ -28,21 +28,21 @@
         <!--profile details container TODO-->
         <div class="note-container">
             <h2>
-                Mariya Ivanova
+                {{ profile.first_name }} {{ profile.last_name }}
                 <img src="https://www.nicepng.com/png/detail/249-2492113_work-profile-user-default-female-suit-comments-default.png">
             </h2>
-            <p>Age: 28</p>
+            <p>Age: {{ profile.age }}</p>
             <div>
-                <p>All notes: 2</p>
+                <p>All notes: {{ notes_count }}</p>
             </div>
         </div>
         <!--end profile details container-->
     </div>
 
     <!--footer-->
-    <footer>
+<footer>
     <div>Python Web Basics Exam @SoftUni</div>
-    </footer>
+</footer>
     <!--end footer-->
 
 </body></html>

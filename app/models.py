@@ -21,4 +21,5 @@ class Note(models.Model):
 
     image_url: str = models.URLField()
     content: str = models.TextField()
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
